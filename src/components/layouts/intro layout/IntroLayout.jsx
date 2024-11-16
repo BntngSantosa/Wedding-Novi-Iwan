@@ -98,6 +98,7 @@ const SectionContent = ({ namaTamu, onShowMain }) => (
 // Main Introlayout Component
 export default function Introlayout({ onShowMain }) {
   const { namaTamu } = useParams();
+  const decodeNamaTamu = decodeURIComponent(namaTamu || "");
 
   useEffect(() => {
     AOS.init();
@@ -109,7 +110,7 @@ export default function Introlayout({ onShowMain }) {
       className="relative w-full h-screen md:max-w-md md:absolute md:right-0"
     >
       <SectionImage />
-      <SectionContent namaTamu={namaTamu} onShowMain={onShowMain} />
+      <SectionContent namaTamu={namaTamu ? decodeNamaTamu : "Nama Tamu"} onShowMain={onShowMain} />
     </section>
   );
 }
